@@ -5,6 +5,10 @@ import com.projeto.poluicao.dto.OpenMeteoResponseDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+
 @Service
 public class ConsomeApi {
 
@@ -15,6 +19,7 @@ public class ConsomeApi {
     }
 
     public AirQualityDataDto buscarQualidadeAr(double latitude, double longitude) {
+        LocalDateTime horaRequisicao = LocalDateTime.now().truncatedTo(ChronoUnit.HOURS);
 
         OpenMeteoResponseDTO response = openMeteoRestClient.get()
                 .uri(uriBuilder -> uriBuilder
@@ -22,6 +27,7 @@ public class ConsomeApi {
                         .queryParam("latitude", latitude)
                         .queryParam("longitude", longitude)
                         .queryParam("hourly", "pm2_5")
+                        .queryParam("forecast_days", 1)
                         .build())
                 .retrieve()
                 .body(OpenMeteoResponseDTO.class);
@@ -30,7 +36,9 @@ public class ConsomeApi {
             throw new RuntimeException("Não foi possível obter os dados da Open-Meteo.");
         }
 
-        Double pm25 = response.current().pm25();
+        int index = response.current().time().indexOf(horaRequisicao);
+
+        Double pm25 = response.current().pm25().get(index);
         String classificacao = classificarNivelPm25(pm25);
 
         return new AirQualityDataDto(latitude, longitude, pm25, classificacao);
