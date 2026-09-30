@@ -2,11 +2,13 @@ package com.projeto.poluicao.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 public record CurrentUnits(
-        String time,
-        int interval,
+        List<LocalDateTime> time,
         @JsonProperty("pm2_5")
-        double pm25
+        List<Double> pm25
         ) {
 
 }
