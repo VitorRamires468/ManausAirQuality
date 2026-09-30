@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: manaus-air-quality-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/manaus_air_quality
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect
+    show-sql: true
+
+telegram:
+  bot:
+    username: "SeuBotQualidadeDoArBot"  # Username obtido no @BotFather
+    token: "${TELEGRAM_BOT_TOKEN}"      # Passado via variável de ambiente ou direto para testes
