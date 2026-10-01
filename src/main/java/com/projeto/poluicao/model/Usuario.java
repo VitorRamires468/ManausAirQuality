@@ -27,8 +27,6 @@ public class Usuario {
     @Column(name = "telegram_chat_id", nullable = false, unique = true)
     private Long telegramChatId;
 
-    private String bairro;
-
     @Column(columnDefinition = "geometry(Point, 4326)")
     private Point localizacao;
 

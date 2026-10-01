@@ -10,11 +10,15 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
-
+      ddl-auto: validate
     show-sql: true
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
 
 telegram:
   bot:
-    username: "SeuBotQualidadeDoArBot"  # Username obtido no @BotFather
-    token: "${TELEGRAM_BOT_TOKEN}"      # Passado via variável de ambiente ou direto para testes
+    username: "Air_quality"  # Username obtido no @BotFather
+    token: "${TELEGRAM_BOT_TOKEN}"# Passado via variável de ambiente ou direto para testes
