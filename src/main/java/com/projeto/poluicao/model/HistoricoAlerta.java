@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 @Table(name = "tb_historico_alerta")
@@ -33,6 +34,6 @@ public class HistoricoAlerta {
 
     @PrePersist
     public void prePersist() {
-        this.dataEnvio = LocalDateTime.now();
+        this.dataEnvio = LocalDateTime.now().truncatedTo(ChronoUnit.HOURS);
     }
 }
