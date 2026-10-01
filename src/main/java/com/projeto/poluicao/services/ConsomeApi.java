@@ -27,6 +27,7 @@ public class ConsomeApi {
                         .queryParam("latitude", latitude)
                         .queryParam("longitude", longitude)
                         .queryParam("hourly", "pm2_5")
+                        .queryParam("timezone", "America/Sao_Paulo")
                         .queryParam("forecast_days", 1)
                         .build())
                 .retrieve()
