@@ -35,7 +35,6 @@ public class ManausAirBot implements SpringLongPollingBot, LongPollingUpdateCons
             TelegramClient telegramClient,
             UsuarioRepository usuarioRepository,
             ConsomeApi consome) {
-        System.out.println(botToken);
         this.botToken = botToken;
         this.telegramClient = telegramClient;
         this.usuarioRepository = usuarioRepository;

@@ -6,11 +6,7 @@ import com.projeto.poluicao.model.HistoricoAlerta;
 import com.projeto.poluicao.model.Usuario;
 import com.projeto.poluicao.repository.HistoricoAlertaRepository;
 import com.projeto.poluicao.repository.UsuarioRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.scheduling.config.FixedRateTask;
-import org.springframework.scheduling.support.CronExpression;
-import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
