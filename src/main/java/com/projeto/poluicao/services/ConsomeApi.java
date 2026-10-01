@@ -36,9 +36,7 @@ public class ConsomeApi {
         if (response == null || response.current() == null) {
             throw new RuntimeException("Não foi possível obter os dados da Open-Meteo.");
         }
-
         int index = response.current().time().indexOf(horaRequisicao);
-
         Double pm25 = response.current().pm25().get(index);
         String classificacao = classificarNivelPm25(pm25);
 
