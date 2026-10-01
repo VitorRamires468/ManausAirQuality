@@ -121,9 +121,9 @@ cd ManausAirQuality
 Crie um arquivo `.env` na raiz do projeto (no mesmo diretório do `docker-compose.yml`):
 
 ```env
-POSTGRES_DB=manaus_air_quality
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=postgrespassword
+DB_POSTGRE=manaus_air_quality
+USER_POSTGRE=postgres
+PASSWORD_POSTGRE=postgrespassword
 TELEGRAM_BOT_TOKEN=SEU_TOKEN_TELEGRAM_AQUI
 ```
 
