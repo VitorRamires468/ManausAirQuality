@@ -1,0 +1,44 @@
+services:
+  # Serviço do Banco de Dados PostgreSQL com PostGIS
+  postgres:
+    image: postgis/postgis
+    container_name: manaus_air_db
+    environment:
+      POSTGRES_DB: ${DB_POSTGRE}
+      POSTGRES_USER: ${USER_POSTGRE}
+      POSTGRES_PASSWORD: ${PASSWORD_POSTGRE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - manaus_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${USER_POSTGRE} -d ${DB_POSTGRE}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Serviço da Aplicação Spring Boot
+  app:
+    build: .
+    container_name: manaus_air_app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${DB_POSTGRE}
+      SPRING_DATASOURCE_USERNAME: ${USER_POSTGRE}
+      SPRING_DATASOURCE_PASSWORD: ${PASSWORD_POSTGRE}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - manaus_net
+
+volumes:
+  postgres_data:
+
+networks:
+  manaus_net:
+    driver: bridge

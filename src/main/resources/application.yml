@@ -3,9 +3,9 @@ spring:
     name: manaus-air-quality-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/manaus_air_quality
-    username: postgres
-    password: root
+    url: jdbc:postgresql://localhost:5432/${DB_POSTGRE}"
+    username: "${USER_POSTGRE}"
+    password: "${PASSWORD_POSTGRE}"
     driver-class-name: org.postgresql.Driver
 
   jpa:
