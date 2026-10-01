@@ -47,7 +47,7 @@ Uma plataforma orientada a dados e eventos que:
                                         (HTTP / REST)
                                               ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                       BACKEND (Java 17 / Spring Boot 3.x)                   │
+│                       BACKEND (Java 21 / Spring Boot 4.x)                   │
 │                                                                             │
 │  • ManausAirBot: Recebe localização GPS do usuário e comandos (/ar, /start) │
 │  • AlertaSchedulerService: Executa o Cron Job agendado de verificação        │
