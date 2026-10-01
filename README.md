@@ -113,8 +113,8 @@ O algoritmo de recomendação utiliza a escala baseada nos diretrizes da **OMS (
 
 ### 1. Clonar o Repositório
 ```bash
-git clone https://github.com/vitorramires468/manaus-air-quality.git
-cd manaus-air-quality
+git clone https://github.com/VitorRamires468/ManausAirQuality.git
+cd ManausAirQuality
 ```
 
 ### 2. Configurar Variáveis de Ambiente
